@@ -8,11 +8,11 @@
             echo ""
 
                if [ ! -f /usr/local/bin/deleteduser ]; then
-               echo "echo "Mod by SL"" > /usr/local/bin/deleteduser
+               echo "echo "JasonTheKiller-"" > /usr/local/bin/deleteduser
                chmod +x /usr/local/bin/deleteduser
                fi
                hariini=`date +%d-%m-%Y`
-               echo "Mod by SL"
+               echo "JasonTheKiller-"
                echo "Thank you for removing the EXPIRED USERS"
                echo "--------------------------------------"
                cat /etc/shadow | cut -d: -f1,8 | sed /:$/d > /tmp/expirelist.txt
