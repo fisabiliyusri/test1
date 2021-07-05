@@ -279,14 +279,14 @@ mkdir -p /run/pluto
 service fail2ban restart 2>/dev/null
 service ipsec restart 2>/dev/null
 service xl2tpd restart 2>/dev/null
-wget -O /usr/bin/addl2tp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/addl2tp.sh && chmod +x /usr/bin/addl2tp
-wget -O /usr/bin/dell2tp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/dell2tp.sh && chmod +x /usr/bin/dell2tp
-wget -O /usr/bin/xp-l2tp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/xp-l2tp.sh && chmod +x /usr/bin/xp-l2tp
-wget -O /usr/bin/addpptp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/addpptp.sh && chmod +x /usr/bin/addpptp
-wget -O /usr/bin/delpptp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/delpptp.sh && chmod +x /usr/bin/delpptp
-wget -O /usr/bin/xp-pptp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/xp-pptp.sh && chmod +x /usr/bin/xp-pptp
-wget -O /usr/bin/renewpptp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/renewpptp.sh && chmod +x /usr/bin/renewpptp
-wget -O /usr/bin/renewl2tp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/renewl2tp.sh && chmod +x /usr/bin/renewl2tp
+wget -O /usr/bin/addl2tp https://raw.githubusercontent.com/fisabiliyusri/test1/main/addl2tp.sh && chmod +x /usr/bin/addl2tp
+wget -O /usr/bin/dell2tp https://raw.githubusercontent.com/fisabiliyusri/test1/main/dell2tp.sh && chmod +x /usr/bin/dell2tp
+wget -O /usr/bin/xp-l2tp https://raw.githubusercontent.com/fisabiliyusri/test1/main/xp-l2tp.sh && chmod +x /usr/bin/xp-l2tp
+wget -O /usr/bin/addpptp https://raw.githubusercontent.com/fisabiliyusri/test1/main/addpptp.sh && chmod +x /usr/bin/addpptp
+wget -O /usr/bin/delpptp https://raw.githubusercontent.com/fisabiliyusri/test1/main/delpptp.sh && chmod +x /usr/bin/delpptp
+wget -O /usr/bin/xp-pptp https://raw.githubusercontent.com/fisabiliyusri/test1/main/xp-pptp.sh && chmod +x /usr/bin/xp-pptp
+wget -O /usr/bin/renewpptp https://raw.githubusercontent.com/fisabiliyusri/test1/main/renewpptp.sh && chmod +x /usr/bin/renewpptp
+wget -O /usr/bin/renewl2tp https://raw.githubusercontent.com/fisabiliyusri/test1/main/renewl2tp.sh && chmod +x /usr/bin/renewl2tp
 touch /var/lib/premium-script/data-user-l2tp
 touch /var/lib/premium-script/data-user-pptp
 rm -f /root/ipsec.sh
