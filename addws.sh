@@ -5,6 +5,11 @@ domain=$(cat /etc/v2ray/domain)
 else
 domain=$IP
 fi
+if [[ "$IPHost" = "" ]]; then
+PUBLIC_IP=$(wget -qO- ipv4.icanhazip.com);
+else
+PUBLIC_IP=$IPHost
+fi
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 		read -rp "User: " -e user
 		CLIENT_EXISTS=$(grep -w $user /etc/v2ray/config.json | wc -l)
@@ -61,6 +66,7 @@ echo -e ""
 echo -e "==========-V2RAY/VMESS-=========="
 echo -e "Remarks        : ${user}"
 echo -e "Domain         : ${domain}"
+echo -e "Server IP      : $PUBLIC_IP"
 echo -e "port TLS       : 4443"
 echo -e "port none TLS  : 80"
 echo -e "id             : ${uuid}"
