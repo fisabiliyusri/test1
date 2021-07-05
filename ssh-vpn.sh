@@ -21,7 +21,7 @@ commonname=SL
 email=sulaiman.xl@facebook.com
 
 # simple password minimal
-wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/password"
+wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/fisabiliyusri/test1/main/password"
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -93,15 +93,15 @@ apt -y install nginx
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/fisabiliyusri/test1/main/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Setup Mod By SL</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/fisabiliyusri/test1/main/vps.conf"
 /etc/init.d/nginx restart
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://github.com/syntax-er0r/AutoScriptSSH/raw/main/badvpn-udpgw64"
+wget -O /usr/bin/badvpn-udpgw "https://github.com/fisabiliyusri/test1/raw/main/badvpn-udpgw64"
 chmod +x /usr/bin/badvpn-udpgw
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
@@ -126,7 +126,7 @@ echo "/usr/sbin/nologin" >> /etc/shells
 # install squid
 cd
 apt -y install squid3
-wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/squid3.conf"
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/fisabiliyusri/test1/main/squid3.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
 
 # setting vnstat
@@ -222,13 +222,13 @@ cd
 apt install -y libxml-parser-perl
 
 # banner /etc/issue.net
-wget -O /etc/issue.net "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/bannerssh.conf"
+wget -O /etc/issue.net "https://raw.githubusercontent.com/fisabiliyusri/test1/main/bannerssh.conf"
 echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
 #install bbr dan optimasi kernel
-wget https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/bbr.sh && chmod +x bbr.sh && ./bbr.sh
-wget https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
 # blockir torrent
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
@@ -249,25 +249,25 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
-wget -O add-host "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/addhost.sh"
-wget -O about "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/about.sh"
-wget -O menu "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/menu.sh"
-wget -O usernew "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/trial.sh"
-wget -O hapus "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/hapus.sh"
-wget -O member "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/member.sh"
-wget -o webmin "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/webmin.sh"
-wget -O delete "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/delete.sh"
-wget -O cek "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/cek.sh"
-wget -O restart "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/restart.sh"
-wget -O speedtest "https://github.com/syntax-er0r/AutoScriptSSH/raw/main/speedtest_cli.py"
-wget -O info "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/info.sh"
-wget -O ram "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/ram.sh"
-wget -O renew "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/renew.sh"
-wget -O autokick "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/autokick.sh"
-wget -O ceklim "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/ceklim.sh"
-wget -O tendang "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/tendang.sh"
-wget -O clear-log "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/clear-log.sh"
+wget -O add-host "https://raw.githubusercontent.com/fisabiliyusri/test1/main/addhost.sh"
+wget -O about "https://raw.githubusercontent.com/fisabiliyusri/test1/main/about.sh"
+wget -O menu "https://raw.githubusercontent.com/fisabiliyusri/test1/main/menu.sh"
+wget -O usernew "https://raw.githubusercontent.com/fisabiliyusri/test1/main/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/fisabiliyusri/test1/main/trial.sh"
+wget -O hapus "https://raw.githubusercontent.com/fisabiliyusri/test1/main/hapus.sh"
+wget -O member "https://raw.githubusercontent.com/fisabiliyusri/test1/main/member.sh"
+wget -o webmin "https://raw.githubusercontent.com/fisabiliyusri/test1/main/webmin.sh"
+wget -O delete "https://raw.githubusercontent.com/fisabiliyusri/test1/main/delete.sh"
+wget -O cek "https://raw.githubusercontent.com/fisabiliyusri/test1/main/cek.sh"
+wget -O restart "https://raw.githubusercontent.com/fisabiliyusri/test1/main/restart.sh"
+wget -O speedtest "https://github.com/fisabiliyusri/test1/raw/main/speedtest_cli.py"
+wget -O info "https://raw.githubusercontent.com/fisabiliyusri/test1/main/info.sh"
+wget -O ram "https://raw.githubusercontent.com/fisabiliyusri/test1/main/ram.sh"
+wget -O renew "https://raw.githubusercontent.com/fisabiliyusri/test1/main/renew.sh"
+wget -O autokick "https://raw.githubusercontent.com/fisabiliyusri/test1/main/autokick.sh"
+wget -O ceklim "https://raw.githubusercontent.com/fisabiliyusri/test1/main/ceklim.sh"
+wget -O tendang "https://raw.githubusercontent.com/fisabiliyusri/test1/main/tendang.sh"
+wget -O clear-log "https://raw.githubusercontent.com/fisabiliyusri/test1/main/clear-log.sh"
 
 echo "0 5 * * * root clear-log && reboot" >> /etc/crontab
 
