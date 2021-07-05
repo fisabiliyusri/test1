@@ -27,7 +27,7 @@ EOF
 
 # Update file attributes
 chmod 600 /etc/ppp/chap-secrets*
-echo -e "### $VPN_USER $exp">>"/var/lib/premium-script/data-user-pptp"
+echo -e "### $VPN_USER $exp">>"/var/lib/crot-script/data-user-pptp"
 cat <<EOF
 
 ================================
