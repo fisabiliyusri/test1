@@ -20,8 +20,8 @@ case $AutoKick in
                 echo -e ""
                 sleep 1
                 clear
-                rm -f /etc/cron.d/tendangannuklirmikey
-                echo "*/5 * * * *  root /usr/bin/tendangannuklirmikey" > /etc/cron.d/tendangannuklirmikey
+                rm -f /etc/cron.d/tendang
+                echo "*/5 * * * *  root /usr/bin/tendang" > /etc/cron.d/tendang
                 echo -e ""
                 echo -e "======================================"
                 echo -e "      AutoKick Mod by SL    "
@@ -36,8 +36,8 @@ case $AutoKick in
                 echo -e ""
                 sleep 1
                 clear
-                rm -f /etc/cron.d/tendangannuklirmikey
-                echo "*/5 * * * *  root /usr/bin/tendangannuklirmikey" > /etc/cron.d/tendangannuklirmikey
+                rm -f /etc/cron.d/tendang
+                echo "*/5 * * * *  root /usr/bin/tendang" > /etc/cron.d/tendang
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
@@ -53,8 +53,8 @@ case $AutoKick in
                 echo -e ""
                 sleep 1
                 clear
-                rm -f /etc/cron.d/tendangannuklirmikey
-                echo "*/5 * * * *  root /usr/bin/tendangannuklirmikey" > /etc/cron.d/tendangannuklirmikey
+                rm -f /etc/cron.d/tendang
+                echo "*/5 * * * *  root /usr/bin/tendang" > /etc/cron.d/tendang
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
@@ -68,7 +68,7 @@ case $AutoKick in
                 ;;
                 4)
                 clear
-                rm -f /etc/cron.d/tendangannuklirmikey
+                rm -f /etc/cron.d/tendang
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
