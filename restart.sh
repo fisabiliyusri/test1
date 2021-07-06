@@ -91,7 +91,7 @@ case $Restart in
                 4)
                 clear
                 /etc/init.d/stunnel4 restart
-				/etc/init.d/sshl restart
+		/etc/init.d/sshl restart
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
@@ -161,7 +161,7 @@ case $Restart in
                 echo -e ""
                 echo -e "======================================"
                 exit
-				;;
+                ;;
                 9)
                 clear
 		systemctl daemon-reload
