@@ -105,7 +105,7 @@ keepalive 5 30
 comp-lzo
 persist-key
 persist-tun
-status server-tcp-1194.log
+status server-tcp-1197.log
 verb 3
 END
 
