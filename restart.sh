@@ -28,17 +28,27 @@ case $Restart in
                 /etc/init.d/ssh restart
                 /etc/init.d/dropbear restart
                 /etc/init.d/stunnel4 restart
+		/etc/init.d/sslh restart
                 /etc/init.d/openvpn restart
                 /etc/init.d/fail2ban restart
                 /etc/init.d/webmin restart
                 /etc/init.d/cron restart
                 /etc/init.d/nginx restart
                 /etc/init.d/squid restart
-				/etc/init.d/sslh restart
-				sudo systemctl daemon-reload
-				sudo systemctl enable sshwsl.service
-				sudo systemctl start sshwsl.service
-				sudo systemctl restart sshwsl.service
+		systemctl daemon-reload
+		systemctl enable ws-openssh.service
+		systemctl start ws-openssh.service
+		systemctl restart ws-openssh.service
+		systemctl enable ws-dropbear.service
+		systemctl start ws-dropbear.service
+		systemctl restart ws-dropbear.service
+		systemctl enable ws-stunnel.service
+		systemctl start ws-stunnel.service
+		systemctl restart ws-stunnel.service
+		systemctl enable ws-ovpn.service
+		systemctl start ws-ovpn.service
+		systemctl restart ws-ovpn.service
+		/etc/init.d/sshd restart
                 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 1000
                 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 1000
                 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000
@@ -154,10 +164,19 @@ case $Restart in
 				;;
                 9)
                 clear
-                sudo systemctl daemon-reload
-				sudo systemctl enable sshwsl.service
-				sudo systemctl start sshwsl.service
-				sudo systemctl restart sshwsl.service
+		systemctl daemon-reload
+		systemctl enable ws-openssh.service
+		systemctl start ws-openssh.service
+		systemctl restart ws-openssh.service
+		systemctl enable ws-dropbear.service
+		systemctl start ws-dropbear.service
+		systemctl restart ws-dropbear.service
+		systemctl enable ws-stunnel.service
+		systemctl start ws-stunnel.service
+		systemctl restart ws-stunnel.service
+		systemctl enable ws-ovpn.service
+		systemctl start ws-ovpn.service
+		systemctl restart ws-ovpn.service
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
