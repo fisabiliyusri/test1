@@ -82,6 +82,33 @@ status server-tcp-1194.log
 verb 3
 END
 
+# Buat config server TCP 1197
+
+cd /etc/openvpn
+cat > /etc/openvpn/server-tcp-1197.conf <<-END
+port 1197
+proto tcp
+dev tun
+ca ca.crt
+cert server.crt
+key server.key
+dh dh2048.pem
+plugin /usr/lib/openvpn/openvpn-plugin-auth-pam.so login
+verify-client-cert none
+username-as-common-name
+server 10.6.0.0 255.255.255.0
+ifconfig-pool-persist ipp.txt
+push "redirect-gateway def1 bypass-dhcp"
+push "dhcp-option DNS 1.1.1.1"
+push "dhcp-option DNS 8.8.8.8"
+keepalive 5 30
+comp-lzo
+persist-key
+persist-tun
+status server-tcp-1194.log
+verb 3
+END
+
 # Buat config server UDP 2200
 cat > /etc/openvpn/server-udp-2200.conf <<-END
 port 2200
@@ -131,6 +158,28 @@ mkdir clientconfig
 cp /etc/openvpn/{server.crt,server.key,ca.crt,ta.key} clientconfig/
 cd clientconfig
 
+
+# Buat config client TCP 1197
+cd /etc/openvpn
+cat > /etc/openvpn/client-tcp-1197.ovpn <<-END
+############## WELCOME TO ###############
+########## SLNET ###########
+####### DONT FORGET TO SUPPORT US #######
+client
+dev tun
+proto tcp
+remote xxxxxxxxx 1197
+resolv-retry infinite
+route-method exe
+nobind
+persist-key
+persist-tun
+auth-user-pass
+comp-lzo
+verb 3
+END
+
+sed -i $MYIP2 /etc/openvpn/client-tcp-1194.ovpn;
 
 # Buat config client UDP 1194
 cd /etc/openvpn
@@ -242,19 +291,27 @@ cd
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
 /etc/init.d/openvpn restart
 
+#1197
+# masukkan certificatenya ke dalam config client TCP 1197
+echo '<ca>' >> /etc/openvpn/client-tcp-1197.ovpn
+cat /etc/openvpn/ca.crt >> /etc/openvpn/client-tcp-1197.ovpn
+echo '</ca>' >> /etc/openvpn/client-tcp-1197.ovpn
+# Copy config OpenVPN client ke home directory root agar mudah didownload ( TCP 1197 )
+cp /etc/openvpn/client-tcp-1197.ovpn /home/vps/public_html/client-tcp-1197.ovpn
+
+#1194
 # masukkan certificatenya ke dalam config client TCP 1194
 echo '<ca>' >> /etc/openvpn/client-tcp-1194.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/client-tcp-1194.ovpn
 echo '</ca>' >> /etc/openvpn/client-tcp-1194.ovpn
-
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( TCP 1194 )
 cp /etc/openvpn/client-tcp-1194.ovpn /home/vps/public_html/client-tcp-1194.ovpn
 
+#2200
 # masukkan certificatenya ke dalam config client UDP 2200
 echo '<ca>' >> /etc/openvpn/client-udp-2200.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/client-udp-2200.ovpn
 echo '</ca>' >> /etc/openvpn/client-udp-2200.ovpn
-
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( UDP 2200 )
 cp /etc/openvpn/client-udp-2200.ovpn /home/vps/public_html/client-udp-2200.ovpn
 
