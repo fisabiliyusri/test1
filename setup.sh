@@ -2,16 +2,22 @@ if [ "${EUID}" -ne 0 ]; then
 echo "You need to run this script as root"
 exit 1
 fi
-if [ "$(systemd-detect-virt)" == "openvz" ]; then
-echo "OpenVZ is not supported"
-exit 1
-fi
+red='\e[1;31m'
+green='\e[0;32m'
+NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
-IZIN=$( curl https://raw.githubusercontent.com/fisabiliyusri/auto1/main/ipvps | grep $MYIP )
+echo "Checking VPS"
+IZIN=$( curl http://ipinfo.io/ip | grep $MYIP )
 if [ $MYIP = $IZIN ]; then
+echo -e "${green}Permintaan Diterima...${NC}"
+else
+echo -e "${red}Permintaan Ditolak!${NC}";
+echo "Hanya untuk pengguna terdaftar"
 fi
-mkdir /var/lib/premium-script;
-echo "Enter the VPS Subdomain Hostname, if not available, please click Enter"
+mkdir /var/lib/crot-script;
+clear
+echo "Masukkan Domain Anda, Jika Anda Tidak Memiliki Domain Klik Enter"
+echo "Ketikkan Perintah addhost setelah proses instalasi Script Selesai"
 read -p "Hostname / Domain: " host
 echo "IP=$host" >> /var/lib/crot-script/ipvps.conf
 wget https://raw.githubusercontent.com/fisabiliyusri/auto1/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
