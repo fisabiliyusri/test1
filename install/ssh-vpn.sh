@@ -3,9 +3,11 @@
 # 
 # ==================================================
 
+GitUser="fisabiliyusri"
+#wget https://github.com/${GitUser}/
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
-MYIP=$(wget -qO- ifconfig.co);
+MYIP=$(wget -qO- ipinfo.io/ip);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 NET=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 source /etc/os-release
@@ -95,10 +97,10 @@ apt -y install nginx
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/fisabiliyusri/test1/main/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/${GitUser}/test1/main/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Setup Mod By SL</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/fisabiliyusri/test1/main/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/${GitUser}/test1/main/vps.conf"
 /etc/init.d/nginx restart
 
 # install badvpn
@@ -128,7 +130,7 @@ echo "/usr/sbin/nologin" >> /etc/shells
 # install squid
 cd
 apt -y install squid3
-wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/fisabiliyusri/test1/main/squid3.conf"
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/${GitUser}/test1/main/squid3.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
 
 # setting vnstat
@@ -187,7 +189,7 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
 #OpenVPN
-wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+wget https://raw.githubusercontent.com/${GitUser}/test1/main/install/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
 # install fail2ban
 apt -y install fail2ban
@@ -224,13 +226,13 @@ cd
 apt install -y libxml-parser-perl
 
 # banner /etc/issue.net
-wget -O /etc/issue.net "https://raw.githubusercontent.com/fisabiliyusri/test1/main/bannerssh.conf"
+wget -O /etc/issue.net "https://raw.githubusercontent.com/${GitUser}/test1/main/bannerssh.conf"
 echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
 #install bbr dan optimasi kernel
-wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/bbr.sh && chmod +x bbr.sh && ./bbr.sh
-wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://raw.githubusercontent.com/${GitUser}/test1/main/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+wget https://raw.githubusercontent.com/${GitUser}/test1/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
 # blockir torrent
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
@@ -251,25 +253,25 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
-wget -O add-host "https://raw.githubusercontent.com/fisabiliyusri/test1/main/addhost.sh"
-wget -O about "https://raw.githubusercontent.com/fisabiliyusri/test1/main/about.sh"
-wget -O menu "https://raw.githubusercontent.com/fisabiliyusri/test1/main/menu.sh"
-wget -O usernew "https://raw.githubusercontent.com/fisabiliyusri/test1/main/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/fisabiliyusri/test1/main/trial.sh"
-wget -O hapus "https://raw.githubusercontent.com/fisabiliyusri/test1/main/hapus.sh"
-wget -O member "https://raw.githubusercontent.com/fisabiliyusri/test1/main/member.sh"
-wget -o webmin "https://raw.githubusercontent.com/fisabiliyusri/test1/main/webmin.sh"
-wget -O delete "https://raw.githubusercontent.com/fisabiliyusri/test1/main/delete.sh"
-wget -O cek "https://raw.githubusercontent.com/fisabiliyusri/test1/main/cek.sh"
-wget -O restart "https://raw.githubusercontent.com/fisabiliyusri/test1/main/restart.sh"
-wget -O speedtest "https://github.com/fisabiliyusri/test1/raw/main/speedtest_cli.py"
-wget -O info "https://raw.githubusercontent.com/fisabiliyusri/test1/main/info.sh"
-wget -O ram "https://raw.githubusercontent.com/fisabiliyusri/test1/main/ram.sh"
-wget -O renew "https://raw.githubusercontent.com/fisabiliyusri/test1/main/renew.sh"
-wget -O autokick "https://raw.githubusercontent.com/fisabiliyusri/test1/main/autokick.sh"
-wget -O ceklim "https://raw.githubusercontent.com/fisabiliyusri/test1/main/ceklim.sh"
-wget -O tendang "https://raw.githubusercontent.com/fisabiliyusri/test1/main/tendang.sh"
-wget -O clear-log "https://raw.githubusercontent.com/fisabiliyusri/test1/main/clear-log.sh"
+wget -O add-host "https://raw.githubusercontent.com/${GitUser}/test1/main/tambah/addhost.sh"
+wget -O about "https://raw.githubusercontent.com/${GitUser}/test1/main/about.sh"
+wget -O menu "https://raw.githubusercontent.com/${GitUser}/test1/main/menu.sh"
+wget -O usernew "https://raw.githubusercontent.com/${GitUser}/test1/main/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/${GitUser}/test1/main/trial.sh"
+wget -O hapus "https://raw.githubusercontent.com/${GitUser}/test1/main/hapus/hapus.sh"
+wget -O member "https://raw.githubusercontent.com/${GitUser}/test1/main/member.sh"
+wget -o webmin "https://raw.githubusercontent.com/${GitUser}/test1/main/webmin.sh"
+wget -O delete "https://raw.githubusercontent.com/${GitUser}/test1/main/hapus/delete.sh"
+wget -O cek "https://raw.githubusercontent.com/${GitUser}/test1/main/cek.sh"
+wget -O restart "https://raw.githubusercontent.com/${GitUser}/test1/main/restart.sh"
+wget -O speedtest "https://github.com/${GitUser}/test1/raw/main/speedtest_cli.py"
+wget -O info "https://raw.githubusercontent.com/${GitUser}/test1/main/info.sh"
+wget -O ram "https://raw.githubusercontent.com/${GitUser}/test1/main/ram.sh"
+wget -O renew "https://raw.githubusercontent.com/${GitUser}/test1/main/renew.sh"
+wget -O autokick "https://raw.githubusercontent.com/${GitUser}/test1/main/autokick.sh"
+wget -O ceklim "https://raw.githubusercontent.com/${GitUser}/test1/main/ceklim.sh"
+wget -O tendang "https://raw.githubusercontent.com/${GitUser}/test1/main/tendang.sh"
+wget -O clear-log "https://raw.githubusercontent.com/${GitUser}/test1/main/clear-log.sh"
 
 echo "0 5 * * * root clear-log && reboot" >> /etc/crontab
 
