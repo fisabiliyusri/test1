@@ -78,7 +78,7 @@ keepalive 5 30
 comp-lzo
 persist-key
 persist-tun
-status lostserver-tcp-1194.log
+status server-tcp-1194.log
 verb 3
 END
 
@@ -103,7 +103,7 @@ keepalive 5 30
 comp-lzo
 persist-key
 persist-tun
-status lostserver-udp-2200.log
+status server-udp-2200.log
 verb 3
 END
 
