@@ -10,9 +10,15 @@ jam=$(date +"%T")
 hari=$(date +"%A")
 tnggl=$(date +"%d-%B-%Y")
 fi
+echo -e "Waktu          : $jam"
+echo -e "Hari           : $hari"
+echo -e "Tanggal        : $tnggl"
+echo -e "ISP Name       : $ISP"
+echo -e "City           : $CITY"
+echo -e "IP VPS         : $IPVPS"
 echo -e ""
 echo -e "=============================-Menu-============================="
-echo -e "* Script         YNTKTS "
+echo -e "* Script       : YNTKTS "
 echo -e "* menu         : List of Main Commands "
 echo -e ""
 echo -e "=========================-SSH & OpenVPN-========================"
