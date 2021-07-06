@@ -16,12 +16,14 @@ else
 echo -e "${red}Permintaan Ditolak!${NC}";
 echo "Hanya untuk pengguna terdaftar"
 fi
+mkdir /etc/v2ray
 mkdir /var/lib/crot-script;
 clear
 echo "Masukkan Domain Anda, Jika Anda Tidak Memiliki Domain Klik Enter"
 echo "Ketikkan Perintah addhost setelah proses instalasi Script Selesai"
 read -p "Hostname / Domain: " host
 echo "IP=$host" >> /var/lib/crot-script/ipvps.conf
+cho "$host" >> /etc/v2ray/domain
 #GitUser="fisabiliyusri"
 #wget https://github.com/${GitUser}/
 wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
