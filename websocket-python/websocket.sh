@@ -29,6 +29,8 @@ wget -O /usr/local/bin/ws-dropbear https://raw.githubusercontent.com/${GitUser}/
 wget -O /usr/local/bin/ws-stunnel https://raw.githubusercontent.com/${GitUser}/test1/${namafolder}/main/ws-stunnel && chmod +x /usr/local/bin/ws-stunnel
 wget -O /usr/local/bin/ws-ovpn https://raw.githubusercontent.com/${GitUser}/test1/${namafolder}/main/ws-ovpn && chmod +x /usr/local/bin/ws-ovpn
 
+#
+systemctl daemon-reload
 #Enable & Start & Restart ws-openssh service
 systemctl enable ws-openssh.service
 systemctl start ws-openssh.service
