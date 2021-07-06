@@ -1,3 +1,5 @@
+GitUser="fisabiliyusri"
+#wget https://github.com/${GitUser}/
 if [ "${EUID}" -ne 0 ]; then
 echo "You need to run this script as root"
 exit 1
@@ -20,6 +22,8 @@ echo "Masukkan Domain Anda, Jika Anda Tidak Memiliki Domain Klik Enter"
 echo "Ketikkan Perintah addhost setelah proses instalasi Script Selesai"
 read -p "Hostname / Domain: " host
 echo "IP=$host" >> /var/lib/crot-script/ipvps.conf
+GitUser="fisabiliyusri"
+#wget https://github.com/${GitUser}/
 wget https://raw.githubusercontent.com/fisabiliyusri/auto1/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 wget https://raw.githubusercontent.com/fisabiliyusri/auto1/main/sstp.sh && chmod +x sstp.sh && screen -S sstp ./sstp.sh
 wget https://raw.githubusercontent.com/fisabiliyusri/auto1/main/wg.sh && chmod +x wg.sh && screen -S wg ./wg.sh
