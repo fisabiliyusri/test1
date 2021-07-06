@@ -23,8 +23,6 @@ commonname=SL
 email=sulaiman.xl@facebook.com
 
 # simple password minimal
-GitUser="fisabiliyusri"
-#wget https://github.com/${GitUser}/
 wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/${GitUser}/test1/main/password"
 chmod +x /etc/pam.d/common-password
 
