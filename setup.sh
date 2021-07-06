@@ -22,20 +22,22 @@ echo "Masukkan Domain Anda, Jika Anda Tidak Memiliki Domain Klik Enter"
 echo "Ketikkan Perintah addhost setelah proses instalasi Script Selesai"
 read -p "Hostname / Domain: " host
 echo "IP=$host" >> /var/lib/crot-script/ipvps.conf
-GitUser="fisabiliyusri"
+#GitUser="fisabiliyusri"
 #wget https://github.com/${GitUser}/
-wget https://raw.githubusercontent.com/fisabiliyusri/auto1/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
-wget https://raw.githubusercontent.com/fisabiliyusri/auto1/main/sstp.sh && chmod +x sstp.sh && screen -S sstp ./sstp.sh
-wget https://raw.githubusercontent.com/fisabiliyusri/auto1/main/wg.sh && chmod +x wg.sh && screen -S wg ./wg.sh
-wget https://raw.githubusercontent.com/fisabiliyusri/auto1/main/ssr.sh && chmod +x ssr.sh && screen -S ssr ./ssr.sh
-wget https://raw.githubusercontent.com/fisabiliyusri/auto1/main/sodosok.sh && chmod +x shadowsocksobfs.sh && screen -S ss ./shadowsocksobfs.sh
-wget https://raw.githubusercontent.com/fisabiliyusri/auto1/main/ins-vt.sh && chmod +x ins-vt.sh && sed -i -e 's/\r$//' ins-vt.sh && screen -S v2ray ./ins-vt.sh
-wget https://raw.githubusercontent.com/fisabiliyusri/auto1/main/ipsec.sh && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
+wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
+wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/websocket-python/websocket.sh && chmod +x websocket.sh && screen -S websocket.sh ./websocket.sh
+wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/sstp.sh && chmod +x sstp.sh && screen -S sstp ./sstp.sh
+wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/wg.sh && chmod +x wg.sh && screen -S wg ./wg.sh
+wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/ssr.sh && chmod +x ssr.sh && screen -S ssr ./ssr.sh
+wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/shadowsocksobfs.sh && chmod +x shadowsocksobfs.sh && screen -S ss ./shadowsocksobfs.sh
+wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/ins-vt.sh && chmod +x ins-vt.sh && sed -i -e 's/\r$//' ins-vt.sh && screen -S v2ray ./ins-vt.sh
+wget https://raw.githubusercontent.com/fisabiliyusri/test1/main/ipsec.sh && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
 rm -f /root/ssh-vpn.sh
+rm -f /root/websocket.sh
 rm -f /root/sstp.sh
 rm -f /root/wg.sh
-rm -f /root/shadowsocksobfs.sh
 rm -f /root/ssr.sh
+rm -f /root/shadowsocksobfs.sh
 rm -f /root/ins-vt.sh
 rm -f /root/go.sh
 rm -f /root/ipsec.sh
