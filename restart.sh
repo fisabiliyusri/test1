@@ -65,6 +65,7 @@ case $Restart in
                 2)
                 clear
                 /etc/init.d/ssh restart
+		/etc/init.d/sshd restart
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
