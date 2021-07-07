@@ -4,6 +4,9 @@ source /etc/os-release
 OS=$ID
 ver=$VERSION_ID
 
+#
+GitUser="fisabiliyusri"
+#wget https://github.com/${GitUser}/
 #Install_Packages
 echo "#############################################"
 echo "Install Paket..."
@@ -90,11 +93,11 @@ ip6tables -I INPUT -m state --state NEW -m udp -p udp --dport 2443:3543 -j ACCEP
 iptables-save > /etc/iptables.up.rules
 ip6tables-save > /etc/ip6tables.up.rules
 cd /usr/bin
-wget -O addss "https://raw.githubusercontent.com/fisabiliyusri/test1/main/addss.sh"
-wget -O delss "https://raw.githubusercontent.com/fisabiliyusri/test1/main/delss.sh"
-wget -O cekss "https://raw.githubusercontent.com/fisabiliyusri/test1/main/cekss.sh"
-wget -O xp-ss "https://raw.githubusercontent.com/fisabiliyusri/test1/main/xp-ss.sh"
-wget -O renewss "https://raw.githubusercontent.com/fisabiliyusri/test1/main/renewss.sh"
+wget -O addss "https://raw.githubusercontent.com/${GitUser}/test1/main/tambah/addss.sh"
+wget -O delss "https://raw.githubusercontent.com/${GitUser}/test1/main/hapus/delss.sh"
+wget -O cekss "https://raw.githubusercontent.com/${GitUser}/test1/main/cekss.sh"
+wget -O xp-ss "https://raw.githubusercontent.com/${GitUser}/test1/main/xp-ss.sh"
+wget -O renewss "https://raw.githubusercontent.com/${GitUser}/test1/main/renewss.sh"
 chmod +x addss
 chmod +x delss
 chmod +x cekss
