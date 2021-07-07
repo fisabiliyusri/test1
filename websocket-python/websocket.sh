@@ -12,6 +12,7 @@ namafolder="websocket-python"
 
 #Install system auto run
 #System OpenSSH Websocket-SSH Python
+cd
 cd /etc/systemd/system/
 wget -O /etc/systemd/system/ws-openssh.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-openssh.service && chmod +x /etc/systemd/system/ws-openssh.service
 
@@ -25,11 +26,11 @@ wget -O /etc/systemd/system/ws-stunnel.service https://raw.githubusercontent.com
 wget -O /etc/systemd/system/ws-ovpn.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-ovpn.service && chmod +x /etc/systemd/system/ws-ovpn.service
 
 #Install Script Websocket-SSH Python
-cd
-wget -O /usr/local/bin/ws-openssh https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-openssh && chmod +x /usr/local/bin/ws-openssh
-wget -O /usr/local/bin/ws-dropbear https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-dropbear && chmod +x /usr/local/bin/ws-dropbear
-wget -O /usr/local/bin/ws-stunnel https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-stunnel && chmod +x /usr/local/bin/ws-stunnel
-wget -O /usr/local/bin/ws-ovpn https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-ovpn && chmod +x /usr/local/bin/ws-ovpn
+cd /usr/local/bin/
+wget -O /usr/local/bin/ws-openssh.py https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-openssh.py && chmod +x /usr/local/bin/ws-openssh.py
+wget -O /usr/local/bin/ws-dropbear.py https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-dropbear.py && chmod +x /usr/local/bin/ws-dropbear.py
+wget -O /usr/local/bin/ws-stunnel.py https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-stunnel.py && chmod +x /usr/local/bin/ws-stunnel.py
+wget -O /usr/local/bin/ws-ovpn.py https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-ovpn.py && chmod +x /usr/local/bin/ws-ovpn.py
 
 #
 systemctl daemon-reload
