@@ -6,4 +6,6 @@ After=multi-user.target
 Type=simple
 Restart=always
 ExecStart=/usr/bin/python /usr/local/bin/ws-ovpn.py
+
+[Install]
 WantedBy=multi-user.target
