@@ -1,16 +1,10 @@
 [Unit]
-Description=Websocket-dropbear By SL
-Documentation=https://google.com
-After=network.target nss-lookup.target
+Description=SSH Over Websocket Python YNTKTS
+After=multi-user.target
 
 [Service]
 Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear.py
-Restart=on-failure
+Restart=always
+ExecStart=/usr/bin/python /usr/local/bin/ws-dropbear.py
 
-[Install]
 WantedBy=multi-user.target
