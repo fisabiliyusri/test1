@@ -4,7 +4,8 @@
 # Centos 7 & 8 64bit 
 # Mod by SL
 # ==================================================
-
+GitUser="fisabiliyusri"
+#wget https://github.com/${GitUser}/
 
 # Check OS version
 if [[ -e /etc/debian_version ]]; then
@@ -89,11 +90,11 @@ WG_RUNNING=$?
 
 # Tambahan
 cd /usr/bin
-wget -O addwg "https://raw.githubusercontent.com/fisabiliyusri/test1/main/addwg.sh"
-wget -O delwg "https://raw.githubusercontent.com/fisabiliyusri/test1/main/delwg.sh"
-wget -O cekwg "https://raw.githubusercontent.com/fisabiliyusri/test1/main/cekwg.sh"
-wget -O xp-wg "https://raw.githubusercontent.com/fisabiliyusri/test1/main/xp-wg.sh"
-wget -O renewwg "https://raw.githubusercontent.com/fisabiliyusri/test1/main/renewwg.sh"
+wget -O addwg "https://raw.githubusercontent.com/${GitUser}/test1/main/tambah/addwg.sh"
+wget -O delwg "https://raw.githubusercontent.com/${GitUser}/test1/main/hapus/delwg.sh"
+wget -O cekwg "https://raw.githubusercontent.com/${GitUser}/test1/main/cekwg.sh"
+wget -O xp-wg "https://raw.githubusercontent.com/${GitUser}/test1/main/xp-wg.sh"
+wget -O renewwg "https://raw.githubusercontent.com/${GitUser}/test1/main/renewwg.sh"
 chmod +x addwg
 chmod +x delwg
 chmod +x cekwg
