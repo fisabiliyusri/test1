@@ -81,7 +81,7 @@ echo -e "* renewtr      : Perbarui akun trojan"
 echo -e ""
 echo -e "=============================-SYSTEM-=========================="
 echo -e "* addhost      : Buat domain untuk VPS"
-echo -e "* webmin       : Tampilkan menu webmin
+echo -e "* webmin       : Tampilkan menu webmin"
 echo -e "* ram          : Cek Penggunaan ram VPS"
 echo -e "* reboot       : Reboot VPS"
 echo -e "* speedtest    : Tes kecepatan VPS"
