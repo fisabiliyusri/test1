@@ -17,6 +17,8 @@ jq_file="${ssr_folder}/jq"
 source /etc/os-release
 OS=$ID
 ver=$VERSION_ID
+GitUser="fisabiliyusri"
+#wget https://github.com/${GitUser}/
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
 Info="${Green_font_prefix}[information]${Font_color_suffix}"
@@ -126,7 +128,7 @@ if [[ ${OS} == "centos" ]]; then
 }
 Start_SSR(){
 	check_pid
-	wget -O /etc/init.d/ssrmu "https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/ssrmu.sh"
+	wget -O /etc/init.d/ssrmu "https://raw.githubusercontent.com/${GitUser}/test1/main/install/ssrmu.sh"
 	/etc/init.d/ssrmu start
 }
 Install_SSR(){
@@ -142,11 +144,11 @@ Save_iptables
 Start_SSR
 }
 Install_SSR
-wget -O /usr/bin/ssr https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/ssrmu.sh && chmod +x /usr/bin/ssr
-wget -O /usr/bin/addssr https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/addssr.sh && chmod +x /usr/bin/addssr
-wget -O /usr/bin/delssr https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/delssr.sh && chmod +x /usr/bin/delssr
-wget -O /usr/bin/xp-ssr https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/xp-ssr.sh && chmod +x /usr/bin/xp-ssr
-wget -O /usr/bin/renewssr https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/renewssr.sh && chmod +x /usr/bin/renewssr
+wget -O /usr/bin/ssr https://raw.githubusercontent.com/${GitUser}/test1/main/install/ssrmu.sh && chmod +x /usr/bin/ssr
+wget -O /usr/bin/addssr https://raw.githubusercontent.com/${GitUser}/test1/main/tambah/addssr.sh && chmod +x /usr/bin/addssr
+wget -O /usr/bin/delssr https://raw.githubusercontent.com/${GitUser}/test1/main/hapus/delssr.sh && chmod +x /usr/bin/delssr
+wget -O /usr/bin/xp-ssr https://raw.githubusercontent.com/${GitUser}/test1/main/xp-ssr.sh && chmod +x /usr/bin/xp-ssr
+wget -O /usr/bin/renewssr https://raw.githubusercontent.com/${GitUser}/test1/main/renewssr.sh && chmod +x /usr/bin/renewssr
 touch /usr/local/shadowsocksr/akun.conf
 rm -f /root/ssr.sh
 echo "0 0 * * * root xp-ssr" >> /etc/crontab
