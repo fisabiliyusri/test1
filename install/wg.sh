@@ -4,8 +4,6 @@
 # Centos 7 & 8 64bit 
 # Mod by SL
 # ==================================================
-GitUser="fisabiliyusri"
-#wget https://github.com/${GitUser}/
 
 # Check OS version
 if [[ -e /etc/debian_version ]]; then
@@ -89,6 +87,8 @@ systemctl is-active --quiet "wg-quick@wg0"
 WG_RUNNING=$?
 
 # Tambahan
+GitUser="fisabiliyusri"
+#wget https://github.com/${GitUser}/
 cd /usr/bin
 wget -O addwg "https://raw.githubusercontent.com/${GitUser}/test1/main/tambah/addwg.sh"
 wget -O delwg "https://raw.githubusercontent.com/${GitUser}/test1/main/hapus/delwg.sh"
