@@ -23,7 +23,7 @@ echo "Masukkan Domain Anda, Jika Anda Tidak Memiliki Domain Klik Enter"
 echo "Ketikkan Perintah addhost setelah proses instalasi Script Selesai"
 read -p "Hostname / Domain: " host
 echo "IP=$host" >> /var/lib/crot-script/ipvps.conf
-cho "$host" >> /etc/v2ray/domain
+echo "$host" >> /etc/v2ray/domain
 #GitUser="fisabiliyusri"
 #wget https://github.com/${GitUser}/
 GitUser="fisabiliyusri"
