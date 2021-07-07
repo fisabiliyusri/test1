@@ -5,7 +5,6 @@ After=multi-user.target
 [Service]
 Type=simple
 Restart=always
-ExecStart=/usr/bin/python /usr/local/bin/ws-openssh.py
-
+ExecStart=/usr/bin/python /home/admin/ws-openssh.py
 [Install]
 WantedBy=multi-user.target
