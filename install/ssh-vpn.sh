@@ -112,17 +112,27 @@ screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
 
+apt-get -y update
 # setting port ssh
-sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
-sed -i 's/Port 40000/g' /etc/ssh/sshd_config
+cd
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g'
+# /etc/ssh/sshd_config
+sed -i '/Port 22/a Port 500' /etc/ssh/sshd_config
+sed -i '/Port 22/a Port 40000' /etc/ssh/sshd_config
+sed -i '/Port 22/a Port 200' /etc/ssh/sshd_config
+sed -i '/Port 22/a Port 143' /etc/ssh/sshd_config
+sed -i 's/#Port 22/Port 22/g' /etc/ssh/sshd_config
+/etc/init.d/ssh restart
 
+echo "===  install Dropbear ==="
 # install dropbear
-apt -y install dropbear
+apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 50000 -p 109"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=44/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 50000 -p 109 -p 77 "/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
+/etc/init.d/ssh restart
 /etc/init.d/dropbear restart
 
 # install squid
@@ -131,27 +141,18 @@ apt -y install squid3
 wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/${GitUser}/test1/main/squid3.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
 
-# setting vnstat
-apt -y install vnstat
-/etc/init.d/vnstat restart
-apt -y install libsqlite3-dev
-wget https://humdi.net/vnstat/vnstat-2.6.tar.gz
-tar zxvf vnstat-2.6.tar.gz
-cd vnstat-2.6
-./configure --prefix=/usr --sysconfdir=/etc && make && make install 
-cd
-vnstat -u -i $NET
-sed -i 's/Interface "'""eth0""'"/Interface "'""$NET""'"/g' /etc/vnstat.conf
-chown vnstat:vnstat /var/lib/vnstat -R
+# setting dan install vnstat debian 9 64bit
+apt-get -y install vnstat
+systemctl start vnstat
 systemctl enable vnstat
-/etc/init.d/vnstat restart
-rm -f /root/vnstat-2.6.tar.gz 
-rm -rf /root/vnstat-2.6
+chkconfig vnstat on
+chown -R vnstat:vnstat /var/lib/vnstat
 
 # install webmin
 apt install webmin -y
 sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
 /etc/init.d/webmin restart
+
 
 # install stunnel
 apt install stunnel4 -y
@@ -162,35 +163,38 @@ socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
-[dropbear]
-accept = 443
-connect = 127.0.0.1:109
-
+[ssldropbear]
+accept = 444
+connect = 127.0.0.1:44
+[ssldropbear]
+accept = 777
+connect = 127.0.0.1:77
 [websocketpython]
 accept = 99
-connect = 30000
-
+connect = 50000
 [openvpn]
 accept = 992
 connect = 127.0.0.1:1194
-
+[openvpn]
+accept = 992
+connect = 127.0.0.1:1194
 END
 
-# make a certificate
+echo "=================  membuat Sertifikat OpenSSL ======================"
+echo "========================================================="
+#membuat sertifikat
 cd /etc/stunnel/
 openssl genrsa -out key.pem 2048
 openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
 -subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
 cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
-
-# konfigurasi stunnel
 cd
+# konfigurasi stunnel
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+cd
 /etc/init.d/stunnel4 restart
-# install sslh
 cd
 apt-get -y install sslh
-
 #configurasi sslh
 wget -O /etc/default/sslh "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/sslh-conf"
 service sslh restart
