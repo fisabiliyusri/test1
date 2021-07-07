@@ -1,30 +1,13 @@
-GitUser="fisabiliyusri"
-#wget https://github.com/${GitUser}/
-if [ "${EUID}" -ne 0 ]; then
-echo "You need to run this script as root"
-exit 1
-fi
-red='\e[1;31m'
-green='\e[0;32m'
-NC='\e[0m'
-MYIP=$(wget -qO- icanhazip.com);
-echo "Checking VPS"
-IZIN=$( curl http://ipinfo.io/ip | grep $MYIP )
-if [ $MYIP = $IZIN ]; then
-echo -e "${green}Permintaan Diterima...${NC}"
-else
-echo -e "${red}Permintaan Ditolak!${NC}";
-echo "Hanya untuk pengguna terdaftar"
-fi
-mkdir /etc/v2ray
-mkdir /var/lib/crot-script;
-clear
-echo "Masukkan Domain Anda, Jika Anda Tidak Memiliki Domain Klik Enter"
-echo "Ketikkan Perintah addhost setelah proses instalasi Script Selesai"
-read -p "Hostname / Domain: " host
-echo "IP=$host" >> /var/lib/crot-script/ipvps.conf
-cho "$host" >> /etc/v2ray/domain
-#GitUser="fisabiliyusri"
+  
+#!/bin/bash
+#created : 
+
+# initialisasi var
+export DEBIAN_FRONTEND=noninteractive
+OS=`uname -m`;
+MYIP=$(wget -qO- ipv4.icanhazip.com);
+MYIP2="s/xxxxxxxxx/$MYIP/g";
+
 #wget https://github.com/${GitUser}/
 GitUser="fisabiliyusri"
 #wget https://raw.githubusercontent.com/${GitUser}/test1/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
