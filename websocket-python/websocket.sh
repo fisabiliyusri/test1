@@ -14,16 +14,16 @@ namafolder="websocket-python"
 #System OpenSSH Websocket-SSH Python
 cd
 cd /etc/systemd/system/
-wget -O /etc/systemd/system/ws-openssh.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-openssh.service && chmod +x /etc/systemd/system/ws-openssh.service
+wget -O /lib/systemd/system/ws-openssh.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-openssh.service && chmod +x /etc/systemd/system/ws-openssh.service
 
 #System Dropbear Websocket-SSH Python
-wget -O /etc/systemd/system/ws-dropbear.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-dropbear.service && chmod +x /etc/systemd/system/ws-dropbear.service
+wget -O /lib/systemd/system/ws-dropbear.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-dropbear.service && chmod +x /etc/systemd/system/ws-dropbear.service
 
 #System SSL/TLS Websocket-SSH Python
-wget -O /etc/systemd/system/ws-stunnel.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-stunnel.service && chmod +x /etc/systemd/system/ws-stunnel.service
+wget -O /lib/systemd/system/ws-stunnel.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-stunnel.service && chmod +x /etc/systemd/system/ws-stunnel.service
 
 ##System Websocket-OpenVPN Python
-wget -O /etc/systemd/system/ws-ovpn.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-ovpn.service && chmod +x /etc/systemd/system/ws-ovpn.service
+wget -O /lib/systemd/system/ws-ovpn.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-ovpn.service && chmod +x /etc/systemd/system/ws-ovpn.service
 
 #Install Script Websocket-SSH Python
 cd /usr/local/bin/
@@ -33,6 +33,7 @@ wget -O /usr/local/bin/ws-stunnel.py https://raw.githubusercontent.com/${GitUser
 wget -O /usr/local/bin/ws-ovpn.py https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-ovpn.py && chmod +x /usr/local/bin/ws-ovpn.py
 
 #
+cd
 systemctl daemon-reload
 #Enable & Start & Restart ws-openssh service
 systemctl enable ws-openssh.service
