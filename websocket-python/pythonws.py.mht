@@ -1,0 +1,292 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://raw.githubusercontent.com/PANCHO7532/scripts-and-random-code/master/nfree/PDirect.py
+Subject: 
+Date: Wed, 7 Jul 2021 05:15:47 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--AoVKV9XRPjn9iu3HIz49ytuHDwEv5bOKwIEsTKeobI----"
+
+
+------MultipartBoundary--AoVKV9XRPjn9iu3HIz49ytuHDwEv5bOKwIEsTKeobI----
+Content-Type: text/html
+Content-ID: <frame-DB1B5B247D4F5A7E67EFD8CE1082F781@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://raw.githubusercontent.com/PANCHO7532/scripts-and-random-code/master/nfree/PDirect.py
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3DUTF-8"></head><body><pre style=3D"word-wrap: break-word; white-space: pr=
+e-wrap;">import socket, threading, thread, select, signal, sys, time, getop=
+t
+
+# Listen
+LISTENING_ADDR =3D '0.0.0.0'
+if sys.argv[1:]:
+  LISTENING_PORT =3D sys.argv[1]
+else:
+  LISTENING_PORT =3D 80 =20
+#Pass
+PASS =3D ''
+
+# CONST
+BUFLEN =3D 4096 * 4
+TIMEOUT =3D 60
+DEFAULT_HOST =3D '127.0.0.1:443'
+RESPONSE =3D ''
+#RESPONSE =3D 'HTTP/1.1 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1=
+.1 200 Connection established\r\n\r\n'  # lint:ok
+
+class Server(threading.Thread):
+    def __init__(self, host, port):
+        threading.Thread.__init__(self)
+        self.running =3D False
+        self.host =3D host
+        self.port =3D port
+        self.threads =3D []
+        self.threadsLock =3D threading.Lock()
+        self.logLock =3D threading.Lock()
+
+    def run(self):
+        self.soc =3D socket.socket(socket.AF_INET)
+        self.soc.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.soc.settimeout(2)
+        intport =3D int(self.port)
+        self.soc.bind((self.host, intport))
+        self.soc.listen(0)
+        self.running =3D True
+
+        try:
+            while self.running:
+                try:
+                    c, addr =3D self.soc.accept()
+                    c.setblocking(1)
+                except socket.timeout:
+                    continue
+
+                conn =3D ConnectionHandler(c, self, addr)
+                conn.start()
+                self.addConn(conn)
+        finally:
+            self.running =3D False
+            self.soc.close()
+
+    def printLog(self, log):
+        self.logLock.acquire()
+        print log
+        self.logLock.release()
+
+    def addConn(self, conn):
+        try:
+            self.threadsLock.acquire()
+            if self.running:
+                self.threads.append(conn)
+        finally:
+            self.threadsLock.release()
+
+    def removeConn(self, conn):
+        try:
+            self.threadsLock.acquire()
+            self.threads.remove(conn)
+        finally:
+            self.threadsLock.release()
+
+    def close(self):
+        try:
+            self.running =3D False
+            self.threadsLock.acquire()
+
+            threads =3D list(self.threads)
+            for c in threads:
+                c.close()
+        finally:
+            self.threadsLock.release()
+
+
+class ConnectionHandler(threading.Thread):
+    def __init__(self, socClient, server, addr):
+        threading.Thread.__init__(self)
+        self.clientClosed =3D False
+        self.targetClosed =3D True
+        self.client =3D socClient
+        self.client_buffer =3D ''
+        self.server =3D server
+        self.log =3D 'Connection: ' + str(addr)
+
+    def close(self):
+        try:
+            if not self.clientClosed:
+                self.client.shutdown(socket.SHUT_RDWR)
+                self.client.close()
+        except:
+            pass
+        finally:
+            self.clientClosed =3D True
+
+        try:
+            if not self.targetClosed:
+                self.target.shutdown(socket.SHUT_RDWR)
+                self.target.close()
+        except:
+            pass
+        finally:
+            self.targetClosed =3D True
+
+    def run(self):
+        try:
+            self.client_buffer =3D self.client.recv(BUFLEN)
+
+            hostPort =3D self.findHeader(self.client_buffer, 'X-Real-Host')
+
+            if hostPort =3D=3D '':
+                hostPort =3D DEFAULT_HOST
+
+            split =3D self.findHeader(self.client_buffer, 'X-Split')
+
+            if split !=3D '':
+                self.client.recv(BUFLEN)
+
+            if hostPort !=3D '':
+                passwd =3D self.findHeader(self.client_buffer, 'X-Pass')
+			=09
+                if len(PASS) !=3D 0 and passwd =3D=3D PASS:
+                    self.method_CONNECT(hostPort)
+                elif len(PASS) !=3D 0 and passwd !=3D PASS:
+                    self.client.send('HTTP/1.1 400 WrongPass!\r\n\r\n')
+                elif hostPort.startswith('127.0.0.1') or hostPort.startswit=
+h('localhost'):
+                    self.method_CONNECT(hostPort)
+                else:
+                    self.client.send('HTTP/1.1 403 Forbidden!\r\n\r\n')
+            else:
+                print '- No X-Real-Host!'
+                self.client.send('HTTP/1.1 400 NoXRealHost!\r\n\r\n')
+
+        except Exception as e:
+            self.log +=3D ' - error: ' + e.strerror
+            self.server.printLog(self.log)
+	    pass
+        finally:
+            self.close()
+            self.server.removeConn(self)
+
+    def findHeader(self, head, header):
+        aux =3D head.find(header + ': ')
+
+        if aux =3D=3D -1:
+            return ''
+
+        aux =3D head.find(':', aux)
+        head =3D head[aux+2:]
+        aux =3D head.find('\r\n')
+
+        if aux =3D=3D -1:
+            return ''
+
+        return head[:aux];
+
+    def connect_target(self, host):
+        i =3D host.find(':')
+        if i !=3D -1:
+            port =3D int(host[i+1:])
+            host =3D host[:i]
+        else:
+            if self.method=3D=3D'CONNECT':
+                port =3D 443
+            else:
+                port =3D sys.argv[1]
+
+        (soc_family, soc_type, proto, _, address) =3D socket.getaddrinfo(ho=
+st, port)[0]
+
+        self.target =3D socket.socket(soc_family, soc_type, proto)
+        self.targetClosed =3D False
+        self.target.connect(address)
+
+    def method_CONNECT(self, path):
+        self.log +=3D ' - CONNECT ' + path
+
+        self.connect_target(path)
+        self.client.sendall(RESPONSE)
+        self.client_buffer =3D ''
+
+        self.server.printLog(self.log)
+        self.doCONNECT()
+
+    def doCONNECT(self):
+        socs =3D [self.client, self.target]
+        count =3D 0
+        error =3D False
+        while True:
+            count +=3D 1
+            (recv, _, err) =3D select.select(socs, [], socs, 3)
+            if err:
+                error =3D True
+            if recv:
+                for in_ in recv:
+		    try:
+                        data =3D in_.recv(BUFLEN)
+                        if data:
+			    if in_ is self.target:
+				self.client.send(data)
+                            else:
+                                while data:
+                                    byte =3D self.target.send(data)
+                                    data =3D data[byte:]
+
+                            count =3D 0
+			else:
+			    break
+		    except:
+                        error =3D True
+                        break
+            if count =3D=3D TIMEOUT:
+                error =3D True
+            if error:
+                break
+
+
+def print_usage():
+    print 'Usage: proxy.py -p &lt;port&gt;'
+    print '       proxy.py -b &lt;bindAddr&gt; -p &lt;port&gt;'
+    print '       proxy.py -b 0.0.0.0 -p 80'
+
+def parse_args(argv):
+    global LISTENING_ADDR
+    global LISTENING_PORT
+   =20
+    try:
+        opts, args =3D getopt.getopt(argv,"hb:p:",["bind=3D","port=3D"])
+    except getopt.GetoptError:
+        print_usage()
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt =3D=3D '-h':
+            print_usage()
+            sys.exit()
+        elif opt in ("-b", "--bind"):
+            LISTENING_ADDR =3D arg
+        elif opt in ("-p", "--port"):
+            LISTENING_PORT =3D int(arg)
+
+
+def main(host=3DLISTENING_ADDR, port=3DLISTENING_PORT):
+    print "\n:-------PythonProxy-------:\n"
+    print "Listening addr: " + LISTENING_ADDR
+    print "Listening port: " + str(LISTENING_PORT) + "\n"
+    print ":-------------------------:\n"
+    server =3D Server(LISTENING_ADDR, LISTENING_PORT)
+    server.start()
+    while True:
+        try:
+            time.sleep(2)
+        except KeyboardInterrupt:
+            print 'Stopping...'
+            server.close()
+            break
+
+#######    parse_args(sys.argv[1:])
+if __name__ =3D=3D '__main__':
+    main()
+
+</pre></body></html>
+------MultipartBoundary--AoVKV9XRPjn9iu3HIz49ytuHDwEv5bOKwIEsTKeobI------
