@@ -1,7 +1,6 @@
 #!/bin/bash
 #Menu
 clear
-fi
 ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
 CITY=$(curl -s ipinfo.io/city )
 WKT=$(curl -s ipinfo.io/timezone )
@@ -9,7 +8,6 @@ IPVPS=$(curl -s ipinfo.io/ip )
 jam=$(date +"%T")
 hari=$(date +"%A")
 tnggl=$(date +"%d-%B-%Y")
-fi
 echo -e "Waktu          : $jam"
 echo -e "Hari           : $hari"
 echo -e "Tanggal        : $tnggl"
