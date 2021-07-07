@@ -64,10 +64,12 @@ netfilter-persistent save
 netfilter-persistent reload
 
 #input perintah sstp
-wget -O /usr/bin/addsstp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/addsstp.sh && chmod +x /usr/bin/addsstp
-wget -O /usr/bin/delsstp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/delsstp.sh && chmod +x /usr/bin/delsstp
-wget -O /usr/bin/ceksstp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/ceksstp.sh && chmod +x /usr/bin/ceksstp
-wget -O /usr/bin/xp-sstp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/xp-sstp.sh && chmod +x /usr/bin/xp-sstp
-wget -O /usr/bin/renewsstp https://raw.githubusercontent.com/syntax-er0r/AutoScriptSSH/main/renewsstp.sh && chmod +x /usr/bin/renewsstp
+GitUser="fisabiliyusri"
+#wget https://github.com/${GitUser}/
+wget -O /usr/bin/addsstp https://raw.githubusercontent.com/${GitUser}/test1/main/tambah/addsstp.sh && chmod +x /usr/bin/addsstp
+wget -O /usr/bin/delsstp https://raw.githubusercontent.com/${GitUser}/test1/main/hapus/delsstp.sh && chmod +x /usr/bin/delsstp
+wget -O /usr/bin/ceksstp https://raw.githubusercontent.com/${GitUser}/test1/main/ceksstp.sh && chmod +x /usr/bin/ceksstp
+wget -O /usr/bin/xp-sstp https://raw.githubusercontent.com/${GitUser}/test1/main/xp-sstp.sh && chmod +x /usr/bin/xp-sstp
+wget -O /usr/bin/renewsstp https://raw.githubusercontent.com/${GitUser}/test1/main/renewsstp.sh && chmod +x /usr/bin/renewsstp
 rm -f /root/sstp.sh
 echo "0 0 * * * root xp-sstp" >> /etc/crontab
