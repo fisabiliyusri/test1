@@ -263,7 +263,7 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
-wget -O addhost "https://raw.githubusercontent.com/${GitUser}/test1/main/tambah/addhost.sh"
+wget -O addhost "https://raw.githubusercontent.com/${GitUser}/test1/main/tambah/slhost.sh"
 wget -O about "https://raw.githubusercontent.com/${GitUser}/test1/main/about.sh"
 wget -O menu "https://raw.githubusercontent.com/${GitUser}/test1/main/menu.sh"
 wget -O usernew "https://raw.githubusercontent.com/${GitUser}/test1/main/usernew.sh"
