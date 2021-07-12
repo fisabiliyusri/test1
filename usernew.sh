@@ -5,6 +5,7 @@ read -p "Password : " Pass
 read -p "Expired (hari): " masaaktif
 
 IP=$(wget -qO- icanhazip.com);
+domain=$(cat /etc/v2ray/domain)
 echo Script AutoCreate Akun SSH dan OpenVPN Mod By SL
 sleep 1
 echo Ping Host
@@ -34,10 +35,6 @@ echo -e "Dropbear          : 143, 109"
 echo -e "SSH WS CDN        : 80 ,8880"
 echo -e "SSL/TLS WS CDN    : 443"
 echo -e "SSL/TLS           : 444"
-echo -e "Port Squid        : 3128, 8080 (limit to IP SSH)" 
-echo -e "OpenVPN           : TCP 1194 http://$IP:81/client-tcp-1194.ovpn"
-echo -e "OpenVPN           : UDP 2200 http://$IP:81/client-udp-2200.ovpn"
-echo -e "OpenVPN           : SSL 992 http://$IP:81/client-tcp-ssl.ovpn"
 echo -e "badvpn            : 7100, 7200, 7300"
 echo -e "==============================="
 echo -e "Aktif Sampai   : $exp"
