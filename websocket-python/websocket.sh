@@ -14,19 +14,17 @@ namafolder="websocket-python"
 #System OpenSSH Websocket-SSH Python
 cd
 cd /etc/systemd/system/
-wget -O /lib/systemd/system/ws-openssh.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-openssh.service && chmod +x /lib/systemd/system/ws-openssh.service
-
+wget -O /etc/systemd/system/ws-openssh.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-openssh.service
 #System Dropbear Websocket-SSH Python
-wget -O /lib/systemd/system/ws-dropbear.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-dropbear.service && chmod +x /lib/systemd/system/ws-dropbear.service
-
+wget -O /etc/systemd/system/ws-dropbear.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-dropbear.service
 #System SSL/TLS Websocket-SSH Python
-wget -O /lib/systemd/system/ws-stunnel.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-stunnel.service && chmod +x /lib/systemd/system/ws-stunnel.service
-
+wget -O /etc/systemd/system/ws-stunnel.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-stunnel.service
 ##System Websocket-OpenVPN Python
-wget -O /lib/systemd/system/ws-ovpn.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-ovpn.service && chmod +x /lib/systemd/system/ws-ovpn.service
+wget -O /etc/systemd/system/ws-ovpn.service https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-ovpn.service
 
 #Install Script Websocket-SSH Python
 cd
+cd /usr/local/bin/
 wget -O /usr/local/bin/ws-openssh https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-openssh && chmod +x /home/admin/ws-openssh
 wget -O /usr/local/bin/ws-dropbear https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-dropbear && chmod +x /home/admin/bin/ws-dropbear
 wget -O /usr/local/bin/ws-stunnel https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-stunnel && chmod +x /home/admin/ws-stunnel
@@ -36,7 +34,7 @@ chmod +x /usr/local/bin/ws-openssh
 chmod +x /usr/local/bin/ws-openssh
 chmod +x /usr/local/bin/ws-openssh
 chmod +x /usr/local/bin/ws-openssh
-
+cd
 #
 cd
 systemctl daemon-reload
