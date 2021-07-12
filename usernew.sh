@@ -5,7 +5,7 @@ read -p "Password : " Pass
 read -p "Expired (hari): " masaaktif
 
 IP=$(wget -qO- icanhazip.com);
-domain=$(cat /etc/v2ray/domain)
+domain=$(cat /etc/v2ray/domain);
 echo Script AutoCreate Akun SSH dan OpenVPN Mod By SL
 sleep 1
 echo Ping Host
