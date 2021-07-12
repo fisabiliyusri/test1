@@ -144,9 +144,9 @@ connect = 127.0.0.1:44
 [ssldropbear]
 accept = 777
 connect = 127.0.0.1:77
-[websocketpython]
+[Stunnelws]
 accept = 99
-connect = 50000
+connect = 700
 [openvpn]
 accept = 992
 connect = 127.0.0.1:1194
