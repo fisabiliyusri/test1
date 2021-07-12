@@ -27,10 +27,10 @@ wget -O /lib/systemd/system/ws-ovpn.service https://raw.githubusercontent.com/${
 
 #Install Script Websocket-SSH Python
 cd
-wget -O /home/admin/ws-openssh.py https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-openssh.py && chmod +x /home/admin/ws-openssh.py
-wget -O /home/admin/ws-dropbear.py https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-dropbear.py && chmod +x /home/admin/bin/ws-dropbear.py
-wget -O /home/admin/ws-stunnel.py https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-stunnel.py && chmod +x /home/admin/ws-stunnel.py
-wget -O /home/admin/ws-ovpn.py https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-ovpn.py && chmod +x /home/admin/ws-ovpn.py
+wget -O /usr/local/bin/ws-openssh https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-openssh.py && chmod +x /home/admin/ws-openssh
+wget -O /usr/local/bin/ws-dropbear https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-dropbear.py && chmod +x /home/admin/bin/ws-dropbear
+wget -O /usr/local/bin/ws-stunnel https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-stunnel.py && chmod +x /home/admin/ws-stunnel
+wget -O /usr/local/bin/ws-ovpn https://raw.githubusercontent.com/${GitUser}/test1/main/${namafolder}/ws-ovpn.py && chmod +x /home/admin/ws-ovpn
 
 #
 cd
