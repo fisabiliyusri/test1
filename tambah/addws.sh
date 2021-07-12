@@ -47,7 +47,7 @@ cat>/etc/v2ray/$user-none.json<<EOF
       "v": "2",
       "ps": "${user}",
       "add": "${domain}",
-      "port": "80",
+      "port": "780",
       "id": "${uuid}",
       "aid": "2",
       "net": "ws",
