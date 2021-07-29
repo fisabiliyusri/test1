@@ -41,9 +41,9 @@ echo "--------------------------------------------------------------------------
 echo ""  | tee -a log-install.txt
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH                  : 22, 500"  | tee -a log-install.txt
-echo "   - SSH-WS Python OpenSSH    : 80"  | tee -a log-install.txt
-echo "   - SSH-WS Python Dropbear   : 8880"  | tee -a log-install.txt
-echo "   - SSH-WS Python SSL/TLS    : 443"  | tee -a log-install.txt
+echo "   - SSH-WS OpenSSH           : 2095"  | tee -a log-install.txt
+echo "   - SSH-WS Dropbear          : 8880"  | tee -a log-install.txt
+echo "   - SSH-WS SSL/TLS           : 443, 2096"  | tee -a log-install.txt
 echo "   - Stunnel4 SSL/TLS         : 444, 777"  | tee -a log-install.txt
 echo "   - Dropbear                 : 143, 109"  | tee -a log-install.txt
 echo "   - Badvpn                   : 7100, 7200, 7300"  | tee -a log-install.txt
