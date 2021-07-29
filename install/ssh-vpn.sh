@@ -171,8 +171,8 @@ connect = 127.0.0.1:44
 accept = 777
 connect = 127.0.0.1:77
 [stunnelws]
-accept = 443
-connect = 700
+accept = 2096
+connect = 2099
 [openvpn]
 accept = 992
 connect = 127.0.0.1:1194
@@ -194,9 +194,9 @@ cd
 cd
 apt-get -y install sslh
 #configurasi sslh
-wget -O /etc/default/sslh "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/sslh-conf"
+wget -O /etc/default/sslh "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/sslh.conf"
 service sslh restart
-
+/etc/init.d/sslh restart
 
 #OpenVPN
 wget https://raw.githubusercontent.com/${GitUser}/test1/main/install/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
