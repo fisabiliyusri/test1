@@ -144,8 +144,8 @@ connect = 127.0.0.1:44
 accept = 777
 connect = 127.0.0.1:77
 [stunnelws]
-accept = 443
-connect = 700
+accept = 2096
+connect = 2099
 [openvpn]
 accept = 992
 connect = 127.0.0.1:1194
