@@ -118,6 +118,7 @@ cd
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g'
 # /etc/ssh/sshd_config
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 500' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 40000' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 51443' /etc/ssh/sshd_config
