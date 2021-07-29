@@ -17,7 +17,7 @@ wget https://raw.githubusercontent.com/${GitUser}/test1/main/websocket-python/we
 #wget https://raw.githubusercontent.com/${GitUser}/test1/main/install/wg.sh && chmod +x wg.sh && screen -S wg ./wg.sh
 #wget https://raw.githubusercontent.com/${GitUser}/test1/main/install/ssr.sh && chmod +x ssr.sh && screen -S ssr ./ssr.sh
 #wget https://raw.githubusercontent.com/${GitUser}/test1/main/install/shadowsocksobfs.sh && chmod +x shadowsocksobfs.sh && screen -S ss ./shadowsocksobfs.sh
-#wget https://raw.githubusercontent.com/${GitUser}/test1/main/install/ins-vt.sh && chmod +x ins-vt.sh && sed -i -e 's/\r$//' ins-vt.sh && screen -S v2ray ./ins-vt.sh
+wget https://raw.githubusercontent.com/${GitUser}/test1/main/install/ins-vt.sh && chmod +x ins-vt.sh && sed -i -e 's/\r$//' ins-vt.sh && screen -S v2ray ./ins-vt.sh
 #wget https://raw.githubusercontent.com/${GitUser}/test1/main/install/ipsec.sh && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
 rm -f /root/ssh-vpn.sh
 rm -f /root/hanyassh.sh
