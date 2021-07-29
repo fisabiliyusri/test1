@@ -168,8 +168,9 @@ cd
 cd
 apt-get -y install sslh
 #configurasi sslh
-wget -O /etc/default/sslh "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/sslh-conf"
+wget -O /etc/default/sslh "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/sslh.conf"
 service sslh restart
+/etc/init.d/sslh restart
 
 #Matikan OpenVPN
 #wget https://raw.githubusercontent.com/${GitUser}/test1/main/install/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
@@ -200,8 +201,8 @@ screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
 
 #install bbr dan optimasi kernel
-wget https://raw.githubusercontent.com/${GitUser}/test1/main/bbr.sh && chmod +x bbr.sh && ./bbr.sh
-wget https://raw.githubusercontent.com/${GitUser}/test1/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+#wget https://raw.githubusercontent.com/${GitUser}/test1/main/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+#wget https://raw.githubusercontent.com/${GitUser}/test1/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
 
 
@@ -265,6 +266,7 @@ chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/openvpn restart
 /etc/init.d/cron restart
 /etc/init.d/ssh restart
+/etc/init.d/sslh restart
 /etc/init.d/dropbear restart
 /etc/init.d/fail2ban restart
 /etc/init.d/webmin restart
