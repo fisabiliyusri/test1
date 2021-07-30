@@ -160,10 +160,7 @@ accept = 777
 connect = 127.0.0.1:77
 [slws]
 accept = 443
-connect = 127.0.0.1:2087
-[stunnelws]
-accept = 2096
-connect = 127.0.0.1:2099
+connect = 127.0.0.1:2096
 [openvpn]
 accept = 992
 connect = 127.0.0.1:1194
