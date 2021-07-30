@@ -18,7 +18,7 @@ state=Indonesia
 locality=Indonesia
 organization=SL
 organizationalunit=SL
-commonname=SL
+commonname=0.0.0.0
 email=sulaiman.xl@facebook.com
 
 # simple password minimal
@@ -173,7 +173,7 @@ cd
 cd
 apt-get -y install sslh
 #configurasi sslh
-wget -O /etc/default/sslh "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/sslh.conf"
+wget -O /etc/default/sslh "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/sslh-conf"
 service sslh restart
 /etc/init.d/sslh restart
 
@@ -294,12 +294,6 @@ chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/vnstat restart
 /etc/init.d/squid restart
 
-#Instal DDOS Flate
-cd
-wget https://github.com/jgmdev/ddos-deflate/archive/master.zip -O ddos.zip
-unzip ddos.zip
-cd ddos-deflate-master
-./install.sh
 #
 cd
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500
