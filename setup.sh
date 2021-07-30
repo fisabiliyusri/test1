@@ -55,7 +55,7 @@ echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH                  : 22, 500"  | tee -a log-install.txt
 echo "   - SSH-WS CDN OpenSSH       : 2095"  | tee -a log-install.txt
 echo "   - SSH-WS CDN Dropbear      : 8880"  | tee -a log-install.txt
-echo "   - SSH-WS CDN SSL/TLS       : 443,2096"  | tee -a log-install.txt
+echo "   - SSH-WS CDN SSL/TLS       : 443"  | tee -a log-install.txt
 echo "   - OpenVPN-WS               : 2082"  | tee -a log-install.txt
 echo "   - OpenVPN                  : TCP 1194, UDP 2200, SSL 992, X1197"  | tee -a log-install.txt
 echo "   - Stunnel4 SSL/TLS         : 444"  | tee -a log-install.txt
