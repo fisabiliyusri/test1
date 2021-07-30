@@ -196,7 +196,7 @@ cd
 cd
 apt-get -y install sslh
 #configurasi sslh
-wget -O /etc/default/sslh "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/sslh.conf"
+wget -O /etc/default/sslh "https://raw.githubusercontent.com/fisabiliyusri/Betatest/master/debian9/sslh-conf"
 service sslh restart
 /etc/init.d/sslh restart
 
