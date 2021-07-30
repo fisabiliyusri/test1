@@ -1,20 +1,6 @@
 #!/bin/bash
 #Menu
 clear
-ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
-CITY=$(curl -s ipinfo.io/city )
-WKT=$(curl -s ipinfo.io/timezone )
-IPVPS=$(curl -s ipinfo.io/ip )
-jam=$(date +"%T")
-hari=$(date +"%A")
-tnggl=$(date +"%d-%B-%Y")
-echo -e "Waktu          : $jam"
-echo -e "Hari           : $hari"
-echo -e "Tanggal        : $tnggl"
-echo -e "ISP Name       : $ISP"
-echo -e "City           : $CITY"
-echo -e "IP VPS         : $IPVPS"
-echo -e ""
 echo -e "=============================-Menu-============================="
 echo -e "* Script       : YNTKTS "
 echo -e "* menu         : List of Main Commands "
@@ -89,4 +75,18 @@ echo -e "* info         : Informasi Spek VPS"
 echo -e "* about        : Informasi script autossh"
 echo -e ""
 echo -e "==============================================================="
+echo -e ""
+ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
+CITY=$(curl -s ipinfo.io/city )
+WKT=$(curl -s ipinfo.io/timezone )
+IPVPS=$(curl -s ipinfo.io/ip )
+jam=$(date +"%T")
+hari=$(date +"%A")
+tnggl=$(date +"%d-%B-%Y")
+echo -e "* Waktu         : $jam"
+echo -e "* Hari          : $hari"
+echo -e "* Tanggal       : $tnggl"
+echo -e "* ISP Name      : $ISP"
+echo -e "* City          : $CITY"
+echo -e "* IP VPS        : $IPVPS"
 echo -e ""
