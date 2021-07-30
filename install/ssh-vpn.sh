@@ -19,7 +19,7 @@ state=Indonesia
 locality=Indonesia
 organization=SL
 organizationalunit=SL
-commonname=SL
+commonname=0.0.0.0
 email=sulaiman.xl@facebook.com
 
 # simple password minimal
