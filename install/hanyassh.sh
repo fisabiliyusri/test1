@@ -89,11 +89,24 @@ ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 # set locale
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 
+
 # install
 apt-get --reinstall --fix-missing install -y bzip2 gzip coreutils wget screen rsyslog iftop htop net-tools zip unzip wget net-tools curl nano sed screen gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch git
 echo "clear" >> .profile
 echo "neofetch" >> .profile
 echo "echo Mod by SL" >> .profile
+
+# install webserver
+apt -y install nginx
+cd
+rm /etc/nginx/sites-enabled/default
+rm /etc/nginx/sites-available/default
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/${GitUser}/test1/main/nginx.conf"
+mkdir -p /home/vps/public_html
+echo "<pre>Setup Mod By SL</pre>" > /home/vps/public_html/index.html
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/${GitUser}/test1/main/vps.conf"
+/etc/init.d/nginx restart
+
 
 
 apt-get -y update
